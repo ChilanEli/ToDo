@@ -8,7 +8,7 @@ You can add a task directly from the texte form under the list or using the form
 You can either check or uncheck you tasks directly from the list or by using the detail page. <br/>
 ![image](https://user-images.githubusercontent.com/6549634/142933359-e8a58980-f831-4c25-b106-948c75487b55.png)
 
-I have yused NuGet commands : <br/>
+I have used NuGet commands : <br/>
 1 - Enable-Migrations <br/>
 2 - Add-Migration ToDo1 <br/>
 3 - Update-Database <br/>
