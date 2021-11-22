@@ -116,3 +116,4 @@ C:\Users\yukse\source\repos\YukselAltranToDo\YukselAltranToDo\obj\Debug\YukselAl
 C:\Users\yukse\source\repos\YukselAltranToDo\YukselAltranToDo\obj\Debug\YukselAltranToDo.csproj.CopyComplete
 C:\Users\yukse\source\repos\YukselAltranToDo\YukselAltranToDo\obj\Debug\YukselAltranToDo.dll
 C:\Users\yukse\source\repos\YukselAltranToDo\YukselAltranToDo\obj\Debug\YukselAltranToDo.pdb
+C:\Users\yukse\source\repos\YukselAltranToDo\YukselAltranToDo\obj\Debug\YukselAltranToDo.csprojAssemblyReference.cache
