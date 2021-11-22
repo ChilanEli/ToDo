@@ -110,10 +110,9 @@ C:\Users\yukse\source\repos\YukselAltranToDo\YukselAltranToDo\bin\fr\EntityFrame
 C:\Users\yukse\source\repos\YukselAltranToDo\YukselAltranToDo\bin\fr\Microsoft.AspNet.Identity.Core.resources.dll
 C:\Users\yukse\source\repos\YukselAltranToDo\YukselAltranToDo\bin\fr\Microsoft.AspNet.Identity.Owin.resources.dll
 C:\Users\yukse\source\repos\YukselAltranToDo\YukselAltranToDo\bin\fr\Microsoft.AspNet.Identity.EntityFramework.resources.dll
-C:\Users\yukse\source\repos\YukselAltranToDo\YukselAltranToDo\obj\Debug\YukselAltranToDo.csprojAssemblyReference.cache
+C:\Users\yukse\source\repos\YukselAltranToDo\YukselAltranToDo\obj\Debug\YukselAltranToDo.Migrations.ToDo1.resources
+C:\Users\yukse\source\repos\YukselAltranToDo\YukselAltranToDo\obj\Debug\YukselAltranToDo.csproj.GenerateResource.cache
 C:\Users\yukse\source\repos\YukselAltranToDo\YukselAltranToDo\obj\Debug\YukselAltranToDo.csproj.CoreCompileInputs.cache
 C:\Users\yukse\source\repos\YukselAltranToDo\YukselAltranToDo\obj\Debug\YukselAltranToDo.csproj.CopyComplete
 C:\Users\yukse\source\repos\YukselAltranToDo\YukselAltranToDo\obj\Debug\YukselAltranToDo.dll
 C:\Users\yukse\source\repos\YukselAltranToDo\YukselAltranToDo\obj\Debug\YukselAltranToDo.pdb
-C:\Users\yukse\source\repos\YukselAltranToDo\YukselAltranToDo\obj\Debug\YukselAltranToDo.Migrations.ToDo1.resources
-C:\Users\yukse\source\repos\YukselAltranToDo\YukselAltranToDo\obj\Debug\YukselAltranToDo.csproj.GenerateResource.cache

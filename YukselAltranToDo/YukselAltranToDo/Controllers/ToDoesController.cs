@@ -18,7 +18,20 @@ namespace YukselAltranToDo.Controllers
         // GET: ToDoes
         public ActionResult Index()
         {
-            return View(db.ToDos.ToList());
+            return View();
+        }
+
+        public ActionResult BuildToDoTable()
+        {
+            return PartialView("_ToDoTable", GetMyToDos());
+        }
+
+        private IEnumerable<ToDo> GetMyToDos()
+        {
+            string currentUserId = User.Identity.GetUserId();
+            ApplicationUser currentUser = db.Users.FirstOrDefault
+                (x => x.Id == currentUserId);
+            return db.ToDos.ToList().Where(x => x.User == currentUser);
         }
 
         // GET: ToDoes/Details/5
@@ -47,14 +60,15 @@ namespace YukselAltranToDo.Controllers
         // plus de détails, voir  https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Description,IsDone")] ToDo toDo)
+        public ActionResult Create([Bind(Include = "Id,Title,Description")] ToDo toDo)
         {
-            if (ModelState.IsValid)
+            if (ModelState.IsValid && (toDo.Title !=null))
             {
                 string currentUserId = User.Identity.GetUserId();
                 ApplicationUser currentUser = db.Users.FirstOrDefault
-                    (x=>x.Id == currentUserId);
+                    (x => x.Id == currentUserId);
                 toDo.User = currentUser;
+                toDo.IsDone = false;
                 db.ToDos.Add(toDo);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -62,6 +76,26 @@ namespace YukselAltranToDo.Controllers
 
             return View(toDo);
         }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult AjaxCreate([Bind(Include = "Id,Title,Description")] ToDo toDo)
+        {
+            if (ModelState.IsValid && (toDo.Title != null))
+            {
+                string currentUserId = User.Identity.GetUserId();
+                ApplicationUser currentUser = db.Users.FirstOrDefault
+                    (x => x.Id == currentUserId);
+                toDo.User = currentUser;
+                toDo.IsDone = false;
+                db.ToDos.Add(toDo);
+                db.SaveChanges();
+            }
+
+            return PartialView("_ToDoTable", GetMyToDos());
+        }
+
+
 
         // GET: ToDoes/Edit/5
         public ActionResult Edit(int? id)
@@ -83,7 +117,7 @@ namespace YukselAltranToDo.Controllers
         // plus de détails, voir  https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Description,IsDone")] ToDo toDo)
+        public ActionResult Edit([Bind(Include = "Id,Title,Description,IsDone")] ToDo toDo)
         {
             if (ModelState.IsValid)
             {
@@ -92,6 +126,27 @@ namespace YukselAltranToDo.Controllers
                 return RedirectToAction("Index");
             }
             return View(toDo);
+        }
+
+        [HttpPost]
+        public ActionResult AjaxEdit(int? id, bool value)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            ToDo toDo = db.ToDos.Find(id);
+            if (toDo == null)
+            {
+                return HttpNotFound();
+            }
+            else
+            {
+                toDo.IsDone = value;
+                db.Entry(toDo).State = EntityState.Modified;
+                db.SaveChanges();
+                return PartialView("_ToDoTable", GetMyToDos());
+            }
         }
 
         // GET: ToDoes/Delete/5

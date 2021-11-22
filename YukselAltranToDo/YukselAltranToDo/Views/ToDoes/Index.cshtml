@@ -1,4 +1,4 @@
-﻿@model IEnumerable<YukselAltranToDo.Models.ToDo>
+﻿@model YukselAltranToDo.Models.ToDo
 
 @{
     ViewBag.Title = "Index";
@@ -9,31 +9,30 @@
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Description)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.IsDone)
-        </th>
-        <th></th>
-    </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Description)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.IsDone)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
-        </td>
-    </tr>
+<div id="tableDiv"></div>
+
+<div id="CreateToDo">
+    @using (Ajax.BeginForm(
+        "AjaxCreate", "ToDoes", new AjaxOptions
+        {
+            InsertionMode = InsertionMode.Replace,
+            HttpMethod = "POST",
+            UpdateTargetId = "tableDiv"
+        }))
+    {
+        <div class="form-group">
+            @Html.AntiForgeryToken()
+            <div>
+                @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
+            </div>
+        </div>
+    }
+</div>
+
+@section Scripts {
+    <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+    <script src="~/Scripts/Custom/CreateTable.js"></script>
+    @Scripts.Render("~/bundles/jqueryval")
 }
-
-</table>
